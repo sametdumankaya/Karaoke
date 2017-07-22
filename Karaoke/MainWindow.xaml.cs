@@ -32,19 +32,19 @@ namespace Karaoke
 		}
 
 		private List<Song> GetMusicList(int index)
-		{
+		 {
 			var language = Song.languages[index];
 			IEnumerable<string> musics;
 			
-			if (index == 1 || index == 2 || index == 3)
+			if (index == 0 || index == 2 || index == 7 || index == 8)
 			{
-				//foreign
-				musics = Directory.GetFiles(projectMusicPath + "/" + language, "*.*", SearchOption.AllDirectories).Where(name => !name.EndsWith(".mp3"));
+				//turkish, child, turkish archive and russian
+				musics = Directory.GetFiles(projectMusicPath + "/" + language, "*.*", SearchOption.AllDirectories);
 			}
 			else
 			{
-				//turkish
-				musics = Directory.GetFiles(projectMusicPath + "/" + language, "*.*", SearchOption.AllDirectories);
+				//foreign
+				musics = Directory.GetFiles(projectMusicPath + "/" + language, "*.*", SearchOption.AllDirectories).Where(name => !name.EndsWith(".mp3"));
 			}
 			
 			var songlist = new List<Song>();
@@ -77,7 +77,7 @@ namespace Karaoke
 
 			try
 			{
-				if(selectedSong.Language.Equals("turkce") || selectedSong.Language.Equals("eglence") || selectedSong.Language.Equals("cocuk"))
+				if(selectedSong.Language.Equals("turkce") || selectedSong.Language.Equals("turkceArsiv") || selectedSong.Language.Equals("cocuk") || selectedSong.Language.Equals("rusca"))
 				{
 					playerProcess = System.Diagnostics.Process.Start(@"C:\Program Files\VideoLAN\VLC\VLC.exe", selectedSongFilePath);
 				}
@@ -89,7 +89,7 @@ namespace Karaoke
 			}
 			catch (System.ComponentModel.Win32Exception)
 			{
-				if(selectedSong.Language.Equals("turkce") || selectedSong.Language.Equals("eglence") || selectedSong.Language.Equals("cocuk"))
+				if (selectedSong.Language.Equals("turkce") || selectedSong.Language.Equals("turkceArsiv") || selectedSong.Language.Equals("cocuk") || selectedSong.Language.Equals("rusca"))
 				{
 					MessageBox.Show("VLC Medya Oynatıcısı yüklü değil. Lütfen VLC Medya Oynatıcısını " + @"'C:\Program Files\'" + " dizinine yükleyin.", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
 				}
@@ -139,6 +139,37 @@ namespace Karaoke
 		{
 			var tag = Convert.ToInt32((sender as Button).Tag.ToString());
 			SetUI(tag);
+
+			_comboBox.SelectedIndex = 0;
+		}
+
+		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			var combobox = sender as ComboBox;
+			var tag = combobox.SelectedIndex;
+
+			if(tag != 0)
+			{
+				SetUI(tag + 1);
+			}
+
+		}
+
+		private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+		{
+			var combobox = sender as ComboBox;
+
+			var list = new List<string>()
+			{
+				"Seçiniz"
+			};
+
+			list.AddRange(Song.definitions);
+			list.RemoveAt(1);
+			list.RemoveAt(1);
+
+			combobox.ItemsSource = list;
+			combobox.SelectedIndex = 0;
 		}
 	}
 }

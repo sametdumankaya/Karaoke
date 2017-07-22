@@ -6,20 +6,26 @@
 		{
 			"turkce",
 			"ingilizce",
+			"cocuk",
 			"almanca",
 			"fransizca",
-			"cocuk",
-			"eglence"
+			"japonca",
+			"korece",
+			"rusca",
+			"turkceArsiv"
 		};
 
 		public static readonly string[] definitions =
 		{
-			"Türkçe",
-			"İngilizce",
-			"Almanca",
-			"Fransızca",
-			"Çocuk Şarkıları",
-			"Eğlence Şarkıları"
+			"Türkçe (Turkish)",
+			"İngilizce (English)",
+			"Çocuk Şarkıları (Child Songs)",
+			"Almanca (German)",
+			"Fransızca (French)",
+			"Japonca (Japanese)",
+			"Korece (Korean)",
+			"Rusça (Russian)",
+			"Türkçe Arşiv"
 		};
 
 		public string FilePath { get; set; }

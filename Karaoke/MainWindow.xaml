@@ -433,82 +433,24 @@
 								<ColumnDefinition Width="*"/>
 							</Grid.ColumnDefinitions>
 
-							<Button Margin="0,12,12,12"
-							        HorizontalContentAlignment="Stretch"
-							        FontSize="24"
-							        Click="ButtonClicked"
-									Tag="2"
-							        Background="SteelBlue">
-								<Button.Effect>
-									<DropShadowEffect ShadowDepth="10" BlurRadius="10"/>
-								</Button.Effect>
-								<Button.Content>
-									<Grid>
-										<Image Source="Content/2.png" Margin="10" />
-										<!--<TextBlock Text="Almanca"
-										           Foreground="White"></TextBlock>-->
-									</Grid>
-								</Button.Content>
-							</Button>
-
-							<Button Grid.Column="1"
-							        Margin="12,12,0,12"
-							        FontSize="24"
-									Tag="3"
-							        Click="ButtonClicked"
-							        HorizontalContentAlignment="Stretch"
-							        Background="SteelBlue">
-								<Button.Effect>
-									<DropShadowEffect ShadowDepth="10" BlurRadius="10"/>
-								</Button.Effect>
-								<Button.Content>
-									<Grid>
-										<Image Source="Content/3.png" Margin="10" />
-										<!--<TextBlock Text="Fransızca"
-										           Foreground="White"></TextBlock>-->
-									</Grid>
-								</Button.Content>
-							</Button>
-
-							<Button Grid.Column="0"
-							        Grid.Row="1"
-							        FontSize="24"
-									Tag="4"
-							        Click="ButtonClicked"
-							        Margin="0,12,12,12"
-							        HorizontalContentAlignment="Stretch"
-							        Background="SteelBlue">
-								<Button.Effect>
-									<DropShadowEffect ShadowDepth="10" BlurRadius="10"/>
-								</Button.Effect>
-								<Button.Content>
-									<Grid>
-										<TextBlock Text="Çocuk Şarkıları"
-										           TextWrapping="Wrap"
-										           Foreground="White"></TextBlock>
-									</Grid>
-								</Button.Content>
-							</Button>
-
-							<Button Grid.Column="1"
-							        Grid.Row="1"
-							        FontSize="24"
-							        Tag="5"
-							        Click="ButtonClicked"
-							        Margin="12,12,0,12"
-							        HorizontalContentAlignment="Stretch"
-							        Background="SteelBlue">
-								<Button.Effect>
-									<DropShadowEffect ShadowDepth="10" BlurRadius="10"/>
-								</Button.Effect>
-								<Button.Content>
-									<Grid>
-										<TextBlock Text="Eğlence Şarkıları"
-										           TextWrapping="Wrap"
-										           Foreground="White"></TextBlock>
-									</Grid>
-								</Button.Content>
-							</Button>
+							<TextBlock Grid.ColumnSpan="2"
+									   FontWeight="Medium"
+									   VerticalAlignment="Bottom"
+									   FontSize="24"
+									   Text="Arşiv (Archive):">
+								
+							</TextBlock>
+							
+							<Grid Grid.ColumnSpan="2" Grid.Row="1" Margin="0,6,0,6">
+								<ComboBox SelectionChanged="ComboBox_SelectionChanged"
+										  FontSize="32"
+										  x:Name="_comboBox"
+										  VerticalContentAlignment="Center"
+										  FontWeight="Bold"
+										  Loaded="ComboBox_Loaded">
+									
+								</ComboBox>
+							</Grid>
 
 						</Grid>
 
@@ -537,12 +479,11 @@
 
 							<Image Source="firmLogo.png"
 								   Margin="0,0,-120,0"
-							   VerticalAlignment="Bottom"
-							   Grid.Row="2"/>
+								   VerticalAlignment="Bottom"
+								   Grid.Row="2"/>
 
 							<TextBlock Grid.Row="3" 
-									   Margin="120,20,0,0"
-									   TextWrapping="Wrap"
+									   Margin="-30,20,0,0"
 									   Text="Copyright © Tüm Hakları Saklıdır. O Ses Sensin LTD. ŞTİ."/>
 						</Grid>
 					</Grid>
